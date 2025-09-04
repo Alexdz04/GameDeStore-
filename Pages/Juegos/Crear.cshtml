@@ -1,0 +1,63 @@
+﻿@page
+@model gamedestore.Pages.Juegos.CrearModel
+@{
+    ViewData["Title"] = "Añadir juego";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-primary">Añadir un nuevo juego</h2>
+
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Juego.nombre" class="form-label"></label>
+                    <input asp-for="Juego.nombre" class="form-control" />
+                    <span asp-validation-for="Juego.nombre" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Juego.descripcion" class="form-label"></label>
+                    <textarea asp-for="Juego.descripcion" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Juego.descripcion" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Juego.precio" class="form-label"></label>
+                    <input asp-for="Juego.precio" class="form-control" />
+                    <span asp-validation-for="Juego.precio" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Juego.fechalanzamiento" class="form-label"></label>
+                    <input asp-for="Juego.fechalanzamiento" class="form-control" />
+                    <span asp-validation-for="Juego.fechalanzamiento" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Juego.genero" class="form-label"></label>
+                    <input asp-for="Juego.genero" class="form-control" />
+                    <span asp-validation-for="Juego.genero" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Juego.imagenurl" class="form-label"></label>
+                    <input asp-for="Juego.imagenurl" class="form-control" />
+                    <span asp-validation-for="Juego.imagenurl" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Crear juego</button>
+                <a asp-page="Index" class="btn btn-secondary">Volver a la lista</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@* validacion del lado del cliente *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

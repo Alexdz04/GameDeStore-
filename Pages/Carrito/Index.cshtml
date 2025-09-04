@@ -1,0 +1,71 @@
+﻿@page
+@model gamedestore.Pages.Carrito.IndexModel
+@{
+    ViewData["Title"] = "Carrito de compras";
+}
+
+<div class="container">
+    <h2 class="text-primary">carrito de compras</h2>
+
+
+    @if (TempData["MensajeCompra"] != null)
+    {
+        <div class="alert alert-success mt-3">
+            @TempData["MensajeCompra"]
+        </div>
+    }
+    
+    @if (Model.Carrito.GetCarritoItems().Count > 0)
+    {
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Juego</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Carrito.GetCarritoItems())
+                {
+                    <tr>
+                        <td>@item.Juego.nombre</td>
+                        <td>@item.Cantidad</td>
+                        <td>@item.Juego.precio.ToString("c")</td>
+                        <td>@((item.Cantidad * item.Juego.precio).ToString("c"))</td>
+                        <td>
+                            <form method="post" asp-page-handler="EliminarDelCarrito">
+                                <input type="hidden" name="itemId" value="@item.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Quitar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                    <td class="fw-bold">@Model.CarritoTotal.ToString("c")</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="text-end mt-4">
+            <a class="btn btn-secondary" asp-page="/Juegos/Index">Seguir comprando</a>
+            <form method="post" asp-page-handler="Comprar" class="d-inline">
+                <button type="submit" class="btn btn-success">Comprar ahora!</button>
+            </form>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info mt-4">
+            el carrito de compras esta vacio, pero, visita el <a asp-page="/Juegos/Index">catalogo</a> para añadir mas juegos!!
+        </div>
+    }
+</div>

@@ -1,0 +1,53 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Bienvenido a gamedestore!!";
+}
+
+
+@* mensaje de compra si existe *@
+@if (TempData["MensajeCompra"] != null)
+{
+    <div class="alert alert-success mt-3 text-center">
+        <h3>@TempData["MensajeCompra"]</h3>
+    </div>
+}
+
+<div class="container text-center mt-5">
+    <div class="jumbotron bg-light p-5 rounded-3">
+        <h1 class="display-4">Bienvenido a gamedestore!!!</h1>
+        <p class="lead">tienda catalogo crud para donde ponemos los mejores juegos</p>
+        <hr class="my-4">
+        <p>tenemos un buen catalogo, titulos para todas las plataformas y gustos</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" asp-page="/Juegos/Index" role="button">
+                <i class="fas fa-gamepad"></i> Ver catalogo
+            </a>
+
+            @* boton de registrarse solo si el usuario no ha iniciado sesion *@
+            @if (HttpContext.Session.GetString("nombreusuario") == null)
+            {
+                <a class="btn btn-secondary btn-lg" asp-page="/Cuenta/Registro" role="button">
+                    <i class="fas fa-user-plus"></i> Crear Cuenta
+                </a>
+            }
+        </p>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <h3><i class="fas fa-star text-warning"></i> Novedades</h3>
+            <p>tenemos los juegos más populares. y tambien lo mas recientes del momento en nuestro catalogo</p>
+        </div>
+        <div class="col-md-4">
+            <h3><i class="fas fa-tags text-success"></i> Ofertas</h3>
+            <p>tenemos ofertas y promociones en nustro catalogo!!</p>
+        </div>
+        <div class="col-md-4">
+            <h3><i class="fas fa-user-circle text-info"></i> Nombre y matricula</h3>
+            <p>Jarelyn Diosnery Diaz Peralta. 2024-0049</p>
+        </div>
+    </div>
+</div>
+
+

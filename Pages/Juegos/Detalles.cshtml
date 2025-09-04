@@ -1,0 +1,39 @@
+﻿@page "{id:int}"
+@model gamedestore.Pages.Juegos.DetallesModel
+@{
+    ViewData["Title"] = "Detalles del juego";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2>Detalles de @Model.Juego.nombre</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Nombre:</strong> @Html.DisplayFor(m => m.Juego.nombre)
+                </li>
+                <li class="list-group-item">
+                    <strong>Descripcion:</strong> @Html.DisplayFor(m => m.Juego.descripcion)
+                </li>
+                <li class="list-group-item">
+                    <strong>Genero:</strong> @Html.DisplayFor(m => m.Juego.genero)
+                </li>
+                <li class="list-group-item">
+                    <strong>Precio:</strong> @Html.DisplayFor(m => m.Juego.precio)
+                </li>
+                <li class="list-group-item">
+                    <strong>Fecha de lanzamiento:</strong> @Html.DisplayFor(m => m.Juego.fechalanzamiento)
+                </li>
+                <li class="list-group-item">
+                    <strong>URL de imagen:</strong> @Html.DisplayFor(m => m.Juego.imagenurl)
+                </li>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <a asp-page="Index" class="btn btn-secondary">Volver a la lista</a>
+            <a class="btn btn-primary" asp-page="Editar" asp-route-id="@Model.Juego.id">Editar</a>
+        </div>
+    </div>
+</div>

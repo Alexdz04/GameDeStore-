@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gamedestore", "gamedestore.csproj", "{FB9C85DA-5D1E-4707-B5E4-2A77F08E4D32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gamedestore pruebas aut", "..\gamedestore pruebas aut\gamedestore pruebas aut.csproj", "{8F8ADC89-16CB-41E4-AD4A-419946393D43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB9C85DA-5D1E-4707-B5E4-2A77F08E4D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB9C85DA-5D1E-4707-B5E4-2A77F08E4D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB9C85DA-5D1E-4707-B5E4-2A77F08E4D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB9C85DA-5D1E-4707-B5E4-2A77F08E4D32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F8ADC89-16CB-41E4-AD4A-419946393D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8ADC89-16CB-41E4-AD4A-419946393D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8ADC89-16CB-41E4-AD4A-419946393D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8ADC89-16CB-41E4-AD4A-419946393D43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC637BAC-BE68-4571-B8FA-F3DB96E1FDCF}
+	EndGlobalSection
+EndGlobal

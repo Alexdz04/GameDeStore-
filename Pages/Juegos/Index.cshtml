@@ -1,0 +1,87 @@
+﻿@page
+@model gamedestore.Pages.Juegos.IndexModel
+@{
+    ViewData["Title"] = "Lista de juegos";
+}
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Catalogo de juegos</h2>
+        </div>
+
+        @if (HttpContext.Session.GetString("rolusuario") == "Administrador")
+        {
+            <div class="col-6 text-end">
+                <a class="btn btn-primary" asp-page="Crear">
+                    <i class="fas fa-plus"></i> Añadir nuevo juego
+                </a>
+            </div>
+        }
+    </div>
+
+    @if (Model.ListaJuegos.Count > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Genero</th>
+                    <th>Precio</th>
+                    
+                    <th></th> 
+                    
+                    @if (HttpContext.Session.GetString("rolusuario") == "Administrador")
+                    {
+                        <th>Acciones</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var juego in Model.ListaJuegos)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => juego.nombre)</td>
+                        <td>@Html.DisplayFor(m => juego.genero)</td>
+                        <td>@Html.DisplayFor(m => juego.precio)</td>
+
+                        
+                        <td class="text-center">
+                            <form method="post" asp-page-handler="AnadirAlCarrito">
+                                <input type="hidden" name="juegoId" value="@juego.id" />
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </button>
+                            </form>
+                        </td>
+                       
+                        @if (HttpContext.Session.GetString("rolusuario") == "Administrador")
+                        {
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-outline-primary mx-1" asp-page="Editar" asp-route-id="@juego.id" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-outline-info mx-1" asp-page="Detalles" asp-route-id="@juego.id" title="Detalles">
+                                        <i class="fas fa-list"></i>
+                                    </a>
+                                    <a class="btn btn-outline-danger mx-1" asp-page="Eliminar" asp-route-id="@juego.id" title="Eliminar">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>no hay juegos en el catalogo, añade uno</p>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+}
